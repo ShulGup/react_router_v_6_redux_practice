@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Child from "./Child";
+import { MyProvider } from "./Context";
+import { Provider } from "react-redux";
+import { store } from "./Store";
 
-function App() {
+export function App() {
+  const [counter, setCounter] = useState(0);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <h1>Hello React.</h1>
+      {counter}
+      <h2>Start editing to see some magic happen!</h2>
+      <Child name="shulbhi" counter={counter} setCounter={setCounter} />
+    </Provider>
   );
 }
 
-export default App;
+// Log to console
+console.log("Hello console");
